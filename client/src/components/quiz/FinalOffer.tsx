@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback, useRef } from "react";
-import { Star, ChevronDown, ChevronLeft, ChevronRight, Check, Shield, Clock, Dumbbell, Smile, Moon, Heart, Flame, Wind } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Star, ChevronDown, ChevronLeft, ChevronRight, Check } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import beforeAfterImg from "@assets/lg-gAdEu-design-sem-nome-2026-02-12t004304767_1772058641154.png";
 import comparisonImg from "@assets/md-OHLiw-screenshot-1_1772058659417.png";
@@ -16,9 +16,17 @@ import resultado4 from "@assets/resultado4_1772058791303.png";
 import resultado5 from "@assets/resultado5_1772058793473.png";
 import resultado6 from "@assets/resultado6_1772058817979.png";
 import resultado7 from "@assets/resultado7_1772058819498.png";
-import appScreen1 from "@assets/md-TeFc2-1-2x-2024-11-06-10-34-05_1772052411730.webp";
-import appScreen2 from "@assets/md-Nqxr4-design-sem-nome-85_1772052414250.png";
-import appScreen3 from "@assets/md-uq1QT-3-2x-2024-11-06-10-46-33-1_1772052416552.webp";
+import socialProofImg from "@assets/lg-3W2sG-mais-de-15-milhoes-comecaram-sua-jornada-fitness-cono_1772059389298.png";
+import appFeaturesImg from "@assets/lg-3D0CM-design-sem-nome-2026-02-12t002021779_1772059385270.png";
+import womanTvImg from "@assets/lg-c6uuV-9a39ab92-6ad8-4c66-b7d1-965a015150e0_1772059387344.png";
+import garantiaImg from "@assets/sm-e02UQ-garantia-de-30-dias-ou-seu-dinheiro-de-volta-copy_1772059382672.png";
+import v1 from "@assets/v1_1772059413981.jpg";
+import v2 from "@assets/v2_1772059413982.jpg";
+import v3 from "@assets/v3_1772059413982.jpg";
+import v4 from "@assets/v4_1772059413982.jpg";
+import v5 from "@assets/v5_1772059413982.jpg";
+import v6 from "@assets/v6_1772059413982.jpg";
+import v7 from "@assets/v7_1772059413982.jpg";
 
 interface Props {
   onBack: () => void;
@@ -39,40 +47,23 @@ const BENEFITS = [
   "Melhora a circulação sanguínea",
 ];
 
-const WHATS_INCLUDED = [
-  { icon: "🎬", text: "Mais de 100 aulas em vídeo" },
-  { icon: "📱", text: "Acesso ao aplicativo HARNY" },
-  { icon: "📖", text: "Guias de alimentação e bem-estar" },
-  { icon: "🧘", text: "Séries para todos os níveis" },
-  { icon: "⏱️", text: "Aulas de 6 a 8 minutos" },
-  { icon: "💬", text: "Suporte via WhatsApp" },
+const REVIEWS = [
+  { img: v1, name: "Márcia S.", stars: 5, text: "Comecei sem acreditar muito, mas em 3 semanas já senti diferença no corpo e no sono. As aulas são curtinhas e fáceis de seguir!" },
+  { img: v2, name: "Regina L.", stars: 5, text: "Eu tinha muita dor nas costas e nos joelhos. Depois de um mês praticando, as dores diminuíram muito. Recomendo demais!" },
+  { img: v3, name: "Cláudia M.", stars: 5, text: "O app é muito fácil de usar. Pratico todo dia de manhã e me sinto outra pessoa. Mais disposta, mais leve." },
+  { img: v4, name: "Fernanda R.", stars: 5, text: "Nunca imaginei que algo tão suave pudesse ter tanto efeito. Emagreci 4kg no primeiro mês sem passar fome." },
+  { img: v5, name: "Patrícia A.", stars: 5, text: "As aulas são perfeitas para quem nunca fez exercício. Me sinto mais calma e durmo muito melhor." },
+  { img: v6, name: "Luciana T.", stars: 5, text: "Minha autoestima voltou! Me sinto mais bonita e confiante. O Tai Chi mudou minha vida." },
+  { img: v7, name: "Sandra O.", stars: 5, text: "Com 62 anos achei que seria difícil, mas as aulas são adaptadas. Faço no meu ritmo e adoro!" },
 ];
 
 const FAQ_ITEMS = [
-  {
-    q: "Nunca pratiquei Tai Chi. Consigo acompanhar?",
-    a: "Sim! As aulas são feitas para iniciantes. Cada movimento é explicado passo a passo, com ritmo calmo e fácil de acompanhar.",
-  },
-  {
-    q: "Preciso de algum equipamento?",
-    a: "Não! Você só precisa de um espaço pequeno e roupas confortáveis. As aulas podem ser feitas em casa mesmo.",
-  },
-  {
-    q: "Quanto tempo dura cada aula?",
-    a: "As aulas têm entre 6 e 8 minutos. Perfeitas para encaixar na sua rotina, mesmo nos dias mais corridos.",
-  },
-  {
-    q: "Em quanto tempo vou ver resultados?",
-    a: "Muitas alunas relatam melhora no sono e disposição já na primeira semana. Resultados visíveis no corpo aparecem entre 3 a 6 semanas.",
-  },
-  {
-    q: "Posso cancelar a qualquer momento?",
-    a: "Sim, você pode cancelar quando quiser, sem burocracia. E ainda tem 7 dias de garantia para testar sem risco.",
-  },
-  {
-    q: "Como acesso as aulas?",
-    a: "Após a inscrição, você recebe o acesso imediatamente por e-mail e WhatsApp. É só baixar o app e começar.",
-  },
+  { q: "Nunca pratiquei Tai Chi. Consigo acompanhar?", a: "Sim! As aulas são feitas para iniciantes. Cada movimento é explicado passo a passo, com ritmo calmo e fácil de acompanhar." },
+  { q: "Preciso de algum equipamento?", a: "Não! Você só precisa de um espaço pequeno e roupas confortáveis. As aulas podem ser feitas em casa mesmo." },
+  { q: "Quanto tempo dura cada aula?", a: "As aulas têm entre 6 e 8 minutos. Perfeitas para encaixar na sua rotina, mesmo nos dias mais corridos." },
+  { q: "Em quanto tempo vou ver resultados?", a: "Muitas alunas relatam melhora no sono e disposição já na primeira semana. Resultados visíveis no corpo aparecem entre 3 a 6 semanas." },
+  { q: "Posso cancelar a qualquer momento?", a: "Sim, você pode cancelar quando quiser, sem burocracia. E ainda tem 30 dias de garantia para testar sem risco." },
+  { q: "Como acesso as aulas?", a: "Após a inscrição, você recebe o acesso imediatamente por e-mail e WhatsApp. É só baixar o app e começar." },
 ];
 
 function CountdownTimer() {
@@ -133,7 +124,6 @@ function ResultsCarousel() {
             className="w-full h-auto rounded-[14px]"
           />
         </AnimatePresence>
-
         <button
           onClick={() => setCurrent((prev) => (prev - 1 + RESULTS.length) % RESULTS.length)}
           className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center shadow-md"
@@ -147,50 +137,68 @@ function ResultsCarousel() {
           <ChevronRight className="w-5 h-5 text-[#333]" />
         </button>
       </div>
-
       <div className="flex justify-center gap-2 mt-4">
         {RESULTS.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-[8px] h-[8px] rounded-full transition-all ${i === current ? "bg-[#DE77A5] scale-125" : "bg-[#D0C4B8]"}`}
-          />
+          <button key={i} onClick={() => setCurrent(i)} className={`w-[8px] h-[8px] rounded-full transition-all ${i === current ? "bg-[#DE77A5] scale-125" : "bg-[#D0C4B8]"}`} />
         ))}
       </div>
     </div>
   );
 }
 
-function AppCarousel() {
-  const screens = [appScreen1, appScreen2, appScreen3];
-  const [active, setActive] = useState(0);
+function ReviewsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % screens.length);
-    }, 3000);
+      setCurrent((prev) => (prev + 1) % REVIEWS.length);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
+  const review = REVIEWS[current];
+
   return (
-    <div className="flex flex-col items-center">
-      <div className="w-[240px] rounded-[24px] overflow-hidden shadow-lg border-[5px] border-[#222] bg-black relative" style={{ aspectRatio: "9/19" }}>
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.img
-            key={active}
-            src={screens[active]}
-            alt={`App ${active + 1}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="w-full h-full object-cover absolute inset-0"
-          />
+    <div className="w-full">
+      <div
+        className="relative"
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          const diff = touchStartX.current - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) setCurrent((prev) => (prev + 1) % REVIEWS.length);
+            else setCurrent((prev) => (prev - 1 + REVIEWS.length) % REVIEWS.length);
+          }
+        }}
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.35 }}
+            className="bg-white border border-[#E8D9C8] rounded-[14px] p-5 shadow-sm"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <img src={review.img} alt={review.name} className="w-12 h-12 rounded-full object-cover border-2 border-[#EBE0D6]" />
+              <div>
+                <p className="text-[#333] font-bold text-[0.95rem]">{review.name}</p>
+                <div className="flex gap-0.5">
+                  {[...Array(review.stars)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                  ))}
+                </div>
+              </div>
+            </div>
+            <p className="text-[#555] text-[0.9rem] leading-relaxed italic">"{review.text}"</p>
+          </motion.div>
         </AnimatePresence>
       </div>
-      <div className="flex gap-2 mt-3">
-        {screens.map((_, i) => (
-          <button key={i} onClick={() => setActive(i)} className={`w-[8px] h-[8px] rounded-full transition-all ${i === active ? "bg-[#DE77A5] scale-125" : "bg-[#D0C4B8]"}`} />
+      <div className="flex justify-center gap-2 mt-4">
+        {REVIEWS.map((_, i) => (
+          <button key={i} onClick={() => setCurrent(i)} className={`w-[8px] h-[8px] rounded-full transition-all ${i === current ? "bg-[#DE77A5] scale-125" : "bg-[#D0C4B8]"}`} />
         ))}
       </div>
     </div>
@@ -258,7 +266,6 @@ function WeightGraph({ currentWeight, targetWeight }: { currentWeight: number; t
           <p className="text-[#DE77A5] font-bold text-[1.3rem]">{targetWeight} kg</p>
         </div>
       </div>
-
       <div className="relative h-[140px] mt-4">
         <svg viewBox="0 0 300 120" className="w-full h-full">
           <defs>
@@ -271,28 +278,18 @@ function WeightGraph({ currentWeight, targetWeight }: { currentWeight: number; t
               <stop offset="100%" stopColor="#DE77A5" stopOpacity="0" />
             </linearGradient>
           </defs>
-
           {points.map((p, i) => {
             const x = 20 + (i / (points.length - 1)) * 260;
             const y = 10 + ((maxVal - p.value) / range) * 90;
             const nextP = points[i + 1];
             const nx = nextP ? 20 + ((i + 1) / (points.length - 1)) * 260 : 0;
             const ny = nextP ? 10 + ((maxVal - nextP.value) / range) * 90 : 0;
-
             return (
               <g key={i}>
                 {nextP && (
                   <>
-                    <path
-                      d={`M${x},${y} Q${(x + nx) / 2},${(y + ny) / 2 + 5} ${nx},${ny} L${nx},110 L${x},110 Z`}
-                      fill="url(#areaGrad)"
-                    />
-                    <path
-                      d={`M${x},${y} Q${(x + nx) / 2},${(y + ny) / 2 + 5} ${nx},${ny}`}
-                      stroke="url(#lineGrad)"
-                      strokeWidth="2.5"
-                      fill="none"
-                    />
+                    <path d={`M${x},${y} Q${(x + nx) / 2},${(y + ny) / 2 + 5} ${nx},${ny} L${nx},110 L${x},110 Z`} fill="url(#areaGrad)" />
+                    <path d={`M${x},${y} Q${(x + nx) / 2},${(y + ny) / 2 + 5} ${nx},${ny}`} stroke="url(#lineGrad)" strokeWidth="2.5" fill="none" />
                   </>
                 )}
                 <circle cx={x} cy={y} r="4" fill={i === points.length - 1 ? "#DE77A5" : "#6C7686"} />
@@ -313,18 +310,21 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
   const benefitImages = [
     { img: flexImg, title: "Flexibilidade e equilíbrio", desc: "Movimentos suaves que melhoram a mobilidade do corpo inteiro." },
     { img: mirrorImg, title: "Autoestima renovada", desc: "Sinta-se bem consigo mesma, por dentro e por fora." },
+    { img: chainsImg, title: "Liberte-se dos maus hábitos", desc: "Quebre o ciclo do sedentarismo e da alimentação emocional." },
     { img: meditationImg, title: "Paz interior", desc: "Reduza o estresse e encontre calma no seu dia a dia." },
     { img: fitImg, title: "Corpo forte e saudável", desc: "Tonifique os músculos sem impacto nas articulações." },
   ];
 
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative">
+      {/* 1. Logo */}
       <div className="w-full pt-6 pb-4 px-6 flex items-center justify-center z-20 max-w-[500px]">
         <img src={logoImg} alt="HARNY Logo" className="h-9 object-contain" />
       </div>
 
       <main className="w-full max-w-[500px] flex flex-col items-center z-10 px-5">
 
+        {/* 2. Plano pronto + timer */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -338,6 +338,7 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           <CountdownTimer />
         </motion.div>
 
+        {/* 3. Before/after branded */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -347,24 +348,16 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           <img src={beforeAfterImg} alt="Transformação HARNY" className="w-full h-auto" />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="w-full mb-6"
-        >
+        {/* 4. Weight graph */}
+        <div className="w-full mb-6">
           <h2 className="text-[1.3rem] font-bold text-black mb-4 text-center">
             Seu <span className="text-[#DE77A5]">objetivo</span>
           </h2>
           <WeightGraph currentWeight={currentW} targetWeight={targetW} />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-full mb-8"
-        >
+        {/* 5. Benefits checklist */}
+        <div className="w-full mb-8">
           <h2 className="text-[1.3rem] font-bold text-black mb-5 text-center">
             Veja o que o <span className="text-[#DE77A5]">Tai Chi</span> faz por você
           </h2>
@@ -378,8 +371,9 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
+        {/* 6. Results carousel */}
         <div className="w-full mb-8">
           <h2 className="text-[1.3rem] font-bold text-black mb-5 text-center">
             Resultados reais de alunas <span className="text-[#DE77A5]">Harny</span>
@@ -387,10 +381,12 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           <ResultsCarousel />
         </div>
 
+        {/* 7. Gym vs Tai Chi */}
         <div className="w-full rounded-[14px] overflow-hidden mb-8 shadow-sm">
           <img src={comparisonImg} alt="Academia vs Tai Chi" className="w-full h-auto" />
         </div>
 
+        {/* 8. Benefit image cards */}
         <div className="w-full mb-8">
           <h2 className="text-[1.3rem] font-bold text-black mb-5 text-center">
             Transforme seu <span className="text-[#DE77A5]">corpo e mente</span>
@@ -408,24 +404,35 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           </div>
         </div>
 
+        {/* 9. Social proof - 1.7 milhões */}
+        <div className="w-full rounded-[14px] overflow-hidden mb-8 shadow-sm">
+          <img src={socialProofImg} alt="Mais de 1.7 milhões começaram sua jornada" className="w-full h-auto" />
+        </div>
+
+        {/* 10. O que você vai receber - app features image */}
         <div className="w-full mb-8">
           <h2 className="text-[1.3rem] font-bold text-black mb-5 text-center">
             O que você vai <span className="text-[#DE77A5]">receber</span>:
           </h2>
-          <div className="flex flex-col gap-3">
-            {WHATS_INCLUDED.map((item, i) => (
-              <div key={i} className="flex items-center gap-4 bg-white border border-[#E8D9C8] rounded-[12px] px-5 py-4 shadow-sm">
-                <span className="text-[1.5rem]">{item.icon}</span>
-                <span className="text-[#333] font-semibold text-[0.95rem]">{item.text}</span>
-              </div>
-            ))}
+          <div className="w-full rounded-[14px] overflow-hidden shadow-sm">
+            <img src={appFeaturesImg} alt="Funcionalidades do aplicativo HARNY" className="w-full h-auto" />
           </div>
         </div>
 
-        <div className="w-full mb-8">
-          <AppCarousel />
+        {/* 11. Woman watching TV */}
+        <div className="w-full rounded-[14px] overflow-hidden mb-8 shadow-sm">
+          <img src={womanTvImg} alt="Pratique em casa assistindo na TV" className="w-full h-auto" />
         </div>
 
+        {/* 12. Reviews/testimonials */}
+        <div className="w-full mb-8">
+          <h2 className="text-[1.3rem] font-bold text-black mb-5 text-center">
+            O que nossas <span className="text-[#DE77A5]">alunas</span> dizem
+          </h2>
+          <ReviewsCarousel />
+        </div>
+
+        {/* 13. Pricing card */}
         <div className="w-full bg-white border-2 border-[#DE77A5] rounded-[18px] p-6 mb-4 shadow-md text-center">
           <p className="text-[#888] text-[0.85rem] mb-1 line-through">De R$ 197,00</p>
           <h2 className="text-[2rem] font-bold text-[#DE77A5] mb-1">R$ 29,90</h2>
@@ -440,11 +447,13 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           </a>
         </div>
 
+        {/* 14. Timer + CTA repeat */}
         <div className="w-full mb-8 text-center">
           <p className="text-[#888] text-[0.85rem] mb-3">Oferta expira em:</p>
           <CountdownTimer />
         </div>
 
+        {/* 15. FAQ */}
         <div className="w-full mb-8">
           <h2 className="text-[1.3rem] font-bold text-black mb-5 text-center">
             Perguntas <span className="text-[#DE77A5]">frequentes</span>
@@ -452,16 +461,15 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           <FAQAccordion />
         </div>
 
-        <div className="w-full bg-[#F0EBE4] border border-[#E0D3C9] rounded-[16px] p-6 mb-6 text-center">
-          <div className="flex justify-center mb-3">
-            <Shield className="w-10 h-10 text-[#6C7686]" />
-          </div>
-          <h3 className="text-[1.1rem] font-bold text-black mb-2">Garantia de 7 dias</h3>
-          <p className="text-[#555] text-[0.9rem] leading-relaxed">
-            Se por qualquer motivo você não gostar, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+        {/* 16. Garantia 30 dias badge */}
+        <div className="w-full flex flex-col items-center mb-6">
+          <img src={garantiaImg} alt="Garantia de 30 dias" className="w-[180px] h-auto mb-4" />
+          <p className="text-[#555] text-[0.9rem] leading-relaxed text-center px-4">
+            Se por qualquer motivo você não gostar, devolvemos 100% do seu dinheiro em até 30 dias. Sem perguntas, sem burocracia.
           </p>
         </div>
 
+        {/* 17. CTA repeat */}
         <div className="w-full mb-6">
           <a
             href="#"
@@ -472,6 +480,7 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           </a>
         </div>
 
+        {/* 18. Prêmio RA 2025 */}
         <div className="w-full rounded-[14px] overflow-hidden shadow-sm mb-6">
           <div className="bg-gradient-to-r from-[#1a1a1a] to-[#2a3a2a] flex items-center justify-center py-4 px-6 gap-4 rounded-[14px]">
             <div className="flex items-center gap-2">
@@ -490,6 +499,7 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           </div>
         </div>
 
+        {/* 19. Stars rating footer */}
         <div className="w-full text-center pb-10">
           <div className="flex justify-center gap-1 mb-2">
             {[...Array(5)].map((_, i) => (
