@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Star } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import logoImg from "@assets/logo_1772043688813.png";
-import beforeAfterImg from "@assets/etapa44_1772052511414.png";
 
 interface Props {
   onNext: () => void;
@@ -100,82 +99,6 @@ export default function PersonalizedLoading({ onNext, onBack }: Props) {
           ))}
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          className="text-[1.5rem] font-bold text-black mb-2 text-center leading-tight tracking-tight"
-        >
-          O corpo muda por completo. <span className="text-[#DE77A5]">Emagrecer é só o começo.</span>
-        </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
-          className="flex items-center gap-1 mb-1 mt-3"
-        >
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-          ))}
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.7 }}
-          className="text-[#888] text-[0.9rem] mb-6 text-center"
-        >
-          Nota 4,7 baseada em 42.489 avaliações
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2 }}
-          className="w-full rounded-[14px] overflow-hidden mb-6 shadow-sm border border-[#E0D3C9]"
-        >
-          <div className="bg-white flex items-center justify-between px-6 py-3">
-            <span className="text-[#333] font-bold text-[1rem]">Antes</span>
-            <span className="text-[#333] font-bold text-[0.9rem] tracking-wide">HARNA</span>
-            <span className="text-[#333] font-bold text-[1rem]">Depois</span>
-          </div>
-          <div className="flex">
-            <div className="flex-1 bg-[#f0e8df] flex items-center justify-center p-4">
-              <div className="w-full aspect-[3/4] bg-[#ddd] rounded-lg flex items-center justify-center text-[#999] text-sm">
-                Antes
-              </div>
-            </div>
-            <div className="flex-1 bg-[#f0e8df] flex items-center justify-center p-4">
-              <div className="w-full aspect-[3/4] bg-[#ddd] rounded-lg flex items-center justify-center text-[#999] text-sm">
-                Depois
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2.5 }}
-          className="w-full rounded-[14px] overflow-hidden shadow-sm"
-        >
-          <div className="bg-gradient-to-r from-[#1a1a1a] to-[#2a3a2a] flex items-center justify-center py-4 px-6 gap-4 rounded-[14px]">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center">
-                <span className="text-black font-bold text-sm">😊</span>
-              </div>
-              <div>
-                <p className="text-white font-bold text-[0.85rem] leading-tight">PRÊMIO</p>
-                <p className="text-green-400 font-bold text-[0.75rem]">RA 2025</p>
-              </div>
-            </div>
-            <div className="border-l border-[#555] pl-4">
-              <p className="text-white font-bold text-[0.85rem] leading-tight">EMPRESA</p>
-              <p className="text-white font-bold text-[0.75rem]">INDICADA</p>
-            </div>
-          </div>
-        </motion.div>
       </main>
     </div>
   );
