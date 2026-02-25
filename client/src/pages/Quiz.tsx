@@ -18,6 +18,10 @@ import ProudBody from "@/components/quiz/ProudBody";
 import TouchToes from "@/components/quiz/TouchToes";
 import NormalDay from "@/components/quiz/NormalDay";
 import NeckStiffness from "@/components/quiz/NeckStiffness";
+import WeightChange from "@/components/quiz/WeightChange";
+import Stairs from "@/components/quiz/Stairs";
+import ExtendArms from "@/components/quiz/ExtendArms";
+import StudiesConfirm from "@/components/quiz/StudiesConfirm";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -153,6 +157,14 @@ export default function Quiz() {
         return <NormalDay onNext={handleNext} onBack={handleBack} />;
       case 15:
         return <NeckStiffness onNext={handleNext} onBack={handleBack} />;
+      case 16:
+        return <WeightChange onNext={handleNext} onBack={handleBack} />;
+      case 17:
+        return <Stairs onNext={handleNext} onBack={handleBack} />;
+      case 18:
+        return <ExtendArms onNext={handleNext} onBack={handleBack} />;
+      case 19:
+        return <StudiesConfirm onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
