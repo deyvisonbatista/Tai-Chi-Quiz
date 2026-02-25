@@ -5,6 +5,7 @@ import logoImg from "@assets/logo_1772043688813.png";
 interface Props {
   onNext: () => void;
   onBack: () => void;
+  onSelect: (value: string) => void;
 }
 
 const OPTIONS = [
@@ -14,7 +15,7 @@ const OPTIONS = [
   { text: "Prefiro que vocês decidam", emoji: "🖤" }
 ];
 
-export default function TrainStart({ onNext, onBack }: Props) {
+export default function TrainStart({ onNext, onBack, onSelect }: Props) {
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       <div className="w-full pt-8 pb-6 px-6 flex items-center justify-between z-20 max-w-[500px]">
@@ -62,7 +63,10 @@ export default function TrainStart({ onNext, onBack }: Props) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.2 + (index * 0.1) }}
               key={index}
-              onClick={() => setTimeout(() => onNext(), 200)}
+              onClick={() => {
+                onSelect(option.text);
+                setTimeout(() => onNext(), 200);
+              }}
               className="w-full bg-[#EBE0D6] hover:bg-[#E2D4C8] border border-[#E0D3C9] transition-all duration-300 rounded-[14px] py-[20px] px-5 flex items-center shadow-[0_2px_8px_rgba(0,0,0,0.03)] active:scale-[0.98] group"
             >
               <div className="w-10 flex justify-center shrink-0">

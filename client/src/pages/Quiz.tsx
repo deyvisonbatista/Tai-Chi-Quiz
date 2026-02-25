@@ -46,18 +46,7 @@ export default function Quiz() {
     setAnswers((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleNext = () => {
-    const nextStep = step + 1;
-    if (nextStep > 26) {
-      const finalAnswers = { ...answers, age: selectedAge };
-      fetch("/api/quiz/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers: finalAnswers }),
-      }).catch(console.error);
-    }
-    setStep(nextStep);
-  };
+  const handleNext = () => setStep((s) => s + 1);
   const handleBack = () => setStep((s) => s - 1);
 
   const handleSelectAge = (age: string) => {
@@ -194,9 +183,9 @@ export default function Quiz() {
       case 21:
         return <RestoreBody onNext={handleNext} onBack={handleBack} />;
       case 22:
-        return <TrainStart onNext={handleNext} onBack={handleBack} />;
+        return <TrainStart onNext={handleNext} onBack={handleBack} onSelect={(val) => saveAnswer("trainIntensity", val)} />;
       case 23:
-        return <TrainIntensity onNext={handleNext} onBack={handleBack} />;
+        return <TrainIntensity onNext={handleNext} onBack={handleBack} selectedIntensity={answers.trainIntensity} />;
       case 24:
         return <TrainDuration onNext={handleNext} onBack={handleBack} />;
       case 25:

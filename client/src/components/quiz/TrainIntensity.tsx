@@ -6,9 +6,12 @@ import trainingImg from "@assets/lg-61GrN-design-sem-nome-2026-02-12t172323379_1
 interface Props {
   onNext: () => void;
   onBack: () => void;
+  selectedIntensity?: string;
 }
 
-export default function TrainIntensity({ onNext, onBack }: Props) {
+export default function TrainIntensity({ onNext, onBack, selectedIntensity }: Props) {
+  const label = selectedIntensity || "Leve e tranquila";
+
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       <div className="w-full pt-8 pb-4 px-6 flex items-center justify-between z-20 max-w-[500px]">
@@ -38,7 +41,7 @@ export default function TrainIntensity({ onNext, onBack }: Props) {
         >
           <span className="text-xl">😌</span>
           <span className="text-white font-bold text-[1.2rem]">
-            Leve e tranquila
+            {label}
           </span>
         </motion.div>
 
@@ -55,10 +58,7 @@ export default function TrainIntensity({ onNext, onBack }: Props) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          onClick={() => {
-            console.log("Next step...");
-            onNext();
-          }}
+          onClick={onNext}
           className="w-full bg-[#6C7076] hover:bg-[#5C6066] text-white font-semibold text-[1.1rem] py-4.5 rounded-[14px] shadow-md transition-colors active:scale-[0.98]"
         >
           Continuar

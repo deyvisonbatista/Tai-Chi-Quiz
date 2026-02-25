@@ -51,9 +51,9 @@ All quiz steps render at root URL `/` using a state machine (`useState(step)`) i
 ## Assets
 All images imported via `@assets/` alias (mapped to `attached_assets/` in vite.config.ts).
 
-## Database
-- `users` table (id, username, password)
-- `quiz_submissions` table (id, answers JSONB, completed_at)
+## Data
+- No database used for quiz data — all answers kept in React state (frontend only)
+- Answers passed between steps via props (e.g., step 22 selection → step 23 display)
 
 ## Key Design Tokens
 - Background: `#FDF6ED` (cream)
