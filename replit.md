@@ -5,14 +5,13 @@ Multi-step quiz funnel app targeting women over 40 interested in Tai Chi. Warm, 
 
 ## Architecture
 - **Frontend**: React + TypeScript + Vite, Tailwind CSS, Framer Motion
-- **Backend**: Express.js + TypeScript
-- **Database**: PostgreSQL with Drizzle ORM
+- **Backend**: Express.js + TypeScript (minimal, no DB for quiz)
 - **Routing**: `wouter` (frontend), Express (backend API)
 
 ## Quiz Flow
 All quiz steps render at root URL `/` using a state machine (`useState(step)`) in `client/src/pages/Quiz.tsx`. No URL changes during navigation.
 
-### Steps (1–26)
+### Steps (1–31)
 1. Age selector (landing page)
 2. Welcome
 3. Goals
@@ -34,26 +33,32 @@ All quiz steps render at root URL `/` using a state machine (`useState(step)`) i
 19. Studies Confirm (info)
 20. Discomfort Areas (multi-select with images)
 21. Restore Body (info)
-22. Train Start (intensity preference)
-23. Train Intensity (confirmation)
+22. Train Start (intensity preference) → saves answer
+23. Train Intensity (shows step 22 selection dynamically)
 24. Train Duration
 25. Evolve Without Suffering (info + chart)
 26. Trace Path (personalization intro)
+27. Height Input (slider, cm/pol toggle, saves heightCm)
+28. Weight Input (kg/lb toggle, calculates IMC from height, saves weightKg)
+29. Target Weight (kg/lb, shows % reduction from current weight)
+30. Ideal Body (2x2 grid with images)
+31. Loading Analysis (animated progress circle, auto-advances)
 
 ## File Structure
-- `client/src/pages/Quiz.tsx` — Main quiz state machine
-- `client/src/components/quiz/` — Individual step components (each receives `onNext`/`onBack` props)
-- `shared/schema.ts` — Drizzle schema (users, quizSubmissions)
-- `server/db.ts` — Database connection
-- `server/storage.ts` — Storage interface (DatabaseStorage)
-- `server/routes.ts` — API routes (`POST /api/quiz/submit`, `GET /api/quiz/submissions`)
+- `client/src/pages/Quiz.tsx` — Main quiz state machine with `answers` state
+- `client/src/components/quiz/` — Individual step components (each receives `onNext`/`onBack` props, some receive/emit data)
+- `shared/schema.ts` — Drizzle schema (users only)
+- `server/storage.ts` — In-memory storage interface
+- `server/routes.ts` — Empty routes (no API needed for quiz)
+
+## Data Flow
+- All answers kept in React state (`answers` object in Quiz.tsx) — no database
+- `saveAnswer(key, value)` stores data; passed as props to subsequent steps
+- Key data flow: height (step 27) → IMC calc (step 28) → target weight % (step 29)
+- Train intensity (step 22) → displayed in step 23
 
 ## Assets
 All images imported via `@assets/` alias (mapped to `attached_assets/` in vite.config.ts).
-
-## Data
-- No database used for quiz data — all answers kept in React state (frontend only)
-- Answers passed between steps via props (e.g., step 22 selection → step 23 display)
 
 ## Key Design Tokens
 - Background: `#FDF6ED` (cream)

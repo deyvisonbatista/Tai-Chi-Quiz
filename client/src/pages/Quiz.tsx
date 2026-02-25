@@ -29,6 +29,11 @@ import TrainIntensity from "@/components/quiz/TrainIntensity";
 import TrainDuration from "@/components/quiz/TrainDuration";
 import EvolveWithoutSuffering from "@/components/quiz/EvolveWithoutSuffering";
 import TracePath from "@/components/quiz/TracePath";
+import HeightInput from "@/components/quiz/HeightInput";
+import WeightInput from "@/components/quiz/WeightInput";
+import TargetWeight from "@/components/quiz/TargetWeight";
+import IdealBody from "@/components/quiz/IdealBody";
+import LoadingAnalysis from "@/components/quiz/LoadingAnalysis";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -192,6 +197,16 @@ export default function Quiz() {
         return <EvolveWithoutSuffering onNext={handleNext} onBack={handleBack} />;
       case 26:
         return <TracePath onNext={handleNext} onBack={handleBack} />;
+      case 27:
+        return <HeightInput onNext={handleNext} onBack={handleBack} onSelect={(val) => saveAnswer("heightCm", val)} />;
+      case 28:
+        return <WeightInput onNext={handleNext} onBack={handleBack} onSelect={(val) => saveAnswer("weightKg", val)} heightCm={answers.heightCm} />;
+      case 29:
+        return <TargetWeight onNext={handleNext} onBack={handleBack} onSelect={(val) => saveAnswer("targetWeightKg", val)} currentWeightKg={answers.weightKg} />;
+      case 30:
+        return <IdealBody onNext={handleNext} onBack={handleBack} />;
+      case 31:
+        return <LoadingAnalysis onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
