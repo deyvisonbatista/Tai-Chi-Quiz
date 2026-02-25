@@ -43,6 +43,10 @@ import MoreEnergy from "@/components/quiz/MoreEnergy";
 import SleepHours from "@/components/quiz/SleepHours";
 import SleepBetter from "@/components/quiz/SleepBetter";
 import ProfileSummary from "@/components/quiz/ProfileSummary";
+import ReadyStart from "@/components/quiz/ReadyStart";
+import NextChapter from "@/components/quiz/NextChapter";
+import SimplePath from "@/components/quiz/SimplePath";
+import PersonalizedLoading from "@/components/quiz/PersonalizedLoading";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -234,6 +238,14 @@ export default function Quiz() {
         return <SleepBetter onNext={handleNext} onBack={handleBack} />;
       case 40:
         return <ProfileSummary onNext={handleNext} onBack={handleBack} energyLevel={answers.energyLevel} sleepHours={answers.sleepHours} />;
+      case 41:
+        return <ReadyStart onNext={handleNext} onBack={handleBack} />;
+      case 42:
+        return <NextChapter onNext={handleNext} onBack={handleBack} />;
+      case 43:
+        return <SimplePath onNext={handleNext} onBack={handleBack} />;
+      case 44:
+        return <PersonalizedLoading onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
