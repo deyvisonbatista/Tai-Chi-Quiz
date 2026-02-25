@@ -37,6 +37,12 @@ import LoadingAnalysis from "@/components/quiz/LoadingAnalysis";
 import PreferStart from "@/components/quiz/PreferStart";
 import FattyFoods from "@/components/quiz/FattyFoods";
 import BloodPressure from "@/components/quiz/BloodPressure";
+import WaterIntake from "@/components/quiz/WaterIntake";
+import EnergyLevel from "@/components/quiz/EnergyLevel";
+import MoreEnergy from "@/components/quiz/MoreEnergy";
+import SleepHours from "@/components/quiz/SleepHours";
+import SleepBetter from "@/components/quiz/SleepBetter";
+import ProfileSummary from "@/components/quiz/ProfileSummary";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -216,6 +222,18 @@ export default function Quiz() {
         return <FattyFoods onNext={handleNext} onBack={handleBack} />;
       case 34:
         return <BloodPressure onNext={handleNext} onBack={handleBack} />;
+      case 35:
+        return <WaterIntake onNext={handleNext} onBack={handleBack} />;
+      case 36:
+        return <EnergyLevel onNext={handleNext} onBack={handleBack} onSelect={(val) => saveAnswer("energyLevel", val)} />;
+      case 37:
+        return <MoreEnergy onNext={handleNext} onBack={handleBack} />;
+      case 38:
+        return <SleepHours onNext={handleNext} onBack={handleBack} onSelect={(val) => saveAnswer("sleepHours", val)} />;
+      case 39:
+        return <SleepBetter onNext={handleNext} onBack={handleBack} />;
+      case 40:
+        return <ProfileSummary onNext={handleNext} onBack={handleBack} energyLevel={answers.energyLevel} sleepHours={answers.sleepHours} />;
       default:
         return null;
     }
