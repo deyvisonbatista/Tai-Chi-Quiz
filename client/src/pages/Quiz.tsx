@@ -26,6 +26,9 @@ import DiscomfortAreas from "@/components/quiz/DiscomfortAreas";
 import RestoreBody from "@/components/quiz/RestoreBody";
 import TrainStart from "@/components/quiz/TrainStart";
 import TrainIntensity from "@/components/quiz/TrainIntensity";
+import TrainDuration from "@/components/quiz/TrainDuration";
+import EvolveWithoutSuffering from "@/components/quiz/EvolveWithoutSuffering";
+import TracePath from "@/components/quiz/TracePath";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -177,6 +180,12 @@ export default function Quiz() {
         return <TrainStart onNext={handleNext} onBack={handleBack} />;
       case 23:
         return <TrainIntensity onNext={handleNext} onBack={handleBack} />;
+      case 24:
+        return <TrainDuration onNext={handleNext} onBack={handleBack} />;
+      case 25:
+        return <EvolveWithoutSuffering onNext={handleNext} onBack={handleBack} />;
+      case 26:
+        return <TracePath onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
