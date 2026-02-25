@@ -1,12 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import logoImg from "@assets/logo_1772043688813.png";
-import appScreenImg from "@assets/md-Nqxr4-design-sem-nome-85_1772052414250.png";
+import appScreen1 from "@assets/md-TeFc2-1-2x-2024-11-06-10-34-05_1772052411730.webp";
+import appScreen2 from "@assets/md-Nqxr4-design-sem-nome-85_1772052414250.png";
+import appScreen3 from "@assets/md-uq1QT-3-2x-2024-11-06-10-46-33-1_1772052416552.webp";
 
 interface Props {
   onNext: () => void;
   onBack: () => void;
 }
+
+const APP_SCREENS = [appScreen1, appScreen2, appScreen3];
 
 const INFO_BLOCKS = [
   {
@@ -33,6 +38,28 @@ const INFO_BLOCKS = [
 ];
 
 export default function SimplePath({ onNext, onBack }: Props) {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const goToSlide = useCallback((index: number) => {
+    setDirection(index > activeSlide ? 1 : -1);
+    setActiveSlide(index);
+  }, [activeSlide]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setActiveSlide((prev) => (prev + 1) % APP_SCREENS.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? 200 : -200, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? -200 : 200, opacity: 0 }),
+  };
+
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       <div className="w-full pt-8 pb-4 px-6 flex items-center justify-between z-20 max-w-[500px]">
@@ -71,10 +98,41 @@ export default function SimplePath({ onNext, onBack }: Props) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="w-[260px] mx-auto mb-6 rounded-[20px] overflow-hidden shadow-lg border-[6px] border-[#222] bg-black"
+          className="w-[260px] mx-auto mb-3 rounded-[28px] overflow-hidden shadow-lg border-[6px] border-[#222] bg-black relative"
+          style={{ aspectRatio: "9/19" }}
         >
-          <img src={appScreenImg} alt="Tela do aplicativo" className="w-full h-auto" />
+          <div className="w-full h-full relative overflow-hidden">
+            <AnimatePresence initial={false} custom={direction} mode="popLayout">
+              <motion.img
+                key={activeSlide}
+                src={APP_SCREENS[activeSlide]}
+                alt={`Tela do aplicativo ${activeSlide + 1}`}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="w-full h-full object-cover absolute inset-0"
+              />
+            </AnimatePresence>
+          </div>
         </motion.div>
+
+        <div className="flex gap-2 mb-6">
+          {APP_SCREENS.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              data-testid={`carousel-dot-${index}`}
+              className={`w-[10px] h-[10px] rounded-full transition-all duration-300 ${
+                index === activeSlide
+                  ? "bg-[#DE77A5] scale-110"
+                  : "bg-[#D0C4B8] hover:bg-[#C0B4A8]"
+              }`}
+            />
+          ))}
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -90,6 +148,7 @@ export default function SimplePath({ onNext, onBack }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
           onClick={onNext}
+          data-testid="button-start-now"
           className="w-full bg-[#DE77A5] hover:bg-[#D4669A] text-white font-bold text-[1.1rem] py-4 rounded-[14px] shadow-md transition-colors active:scale-[0.98] flex items-center justify-center gap-2"
         >
           EU QUERO COMEÇAR AGORA! 💕
