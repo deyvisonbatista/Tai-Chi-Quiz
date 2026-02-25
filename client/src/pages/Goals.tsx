@@ -59,8 +59,7 @@ export default function Goals() {
               transition={{ duration: 0.4, delay: 0.1 + (index * 0.1) }}
               key={goal.id}
               onClick={() => {
-                console.log("Selected goal:", goal.id);
-                // Next step navigation goes here later
+                setTimeout(() => setLocation("/solution"), 200);
               }}
               className="w-full bg-[#EBE0D6] hover:bg-[#E2D4C8] border border-[#E0D3C9] transition-all duration-300 rounded-[14px] flex items-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] group p-1"
             >
