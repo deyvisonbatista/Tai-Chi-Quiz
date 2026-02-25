@@ -47,6 +47,7 @@ import ReadyStart from "@/components/quiz/ReadyStart";
 import NextChapter from "@/components/quiz/NextChapter";
 import SimplePath from "@/components/quiz/SimplePath";
 import PersonalizedLoading from "@/components/quiz/PersonalizedLoading";
+import FinalOffer from "@/components/quiz/FinalOffer";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -246,6 +247,8 @@ export default function Quiz() {
         return <SimplePath onNext={handleNext} onBack={handleBack} />;
       case 44:
         return <PersonalizedLoading onNext={handleNext} onBack={handleBack} />;
+      case 45:
+        return <FinalOffer onBack={handleBack} weightKg={answers.weightKg} targetWeight={answers.targetWeight} />;
       default:
         return null;
     }
