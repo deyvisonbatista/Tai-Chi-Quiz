@@ -1,17 +1,19 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import togetherImg from "@assets/lg-pwSns-design-sem-nome-86_1772044914381.png";
 
-export default function Together() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
 
+export default function Together({ onNext, onBack }: Props) {
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
       <div className="w-full pt-8 pb-4 px-6 flex items-center justify-between z-20 max-w-[500px]">
-        <button onClick={() => setLocation("/focus-areas")} className="p-2 -ml-2 active:scale-95 transition-transform">
+        <button onClick={onBack} className="p-2 -ml-2 active:scale-95 transition-transform">
           <ArrowLeft className="w-6 h-6 text-black" />
         </button>
         <img src={logoImg} alt="HARNY Logo" className="h-8 object-contain" />
@@ -58,7 +60,7 @@ export default function Together() {
           transition={{ duration: 0.5, delay: 0.4 }}
           onClick={() => {
             console.log("Proceed to next stage...");
-            // Final phase or next quiz module
+            onNext();
           }}
           className="w-full bg-[#6C7076] hover:bg-[#5C6066] text-white font-semibold text-[1.1rem] py-4 rounded-[14px] shadow-md transition-colors active:scale-[0.98]"
         >

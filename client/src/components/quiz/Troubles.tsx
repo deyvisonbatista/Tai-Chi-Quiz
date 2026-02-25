@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@assets/logo_1772043688813.png";
@@ -11,8 +10,12 @@ const OPTIONS = [
   { id: "forca", label: "Não tenho força", emoji: "🫠" }
 ];
 
-export default function Troubles() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
+
+export default function Troubles({ onNext, onBack }: Props) {
   const [selected, setSelected] = useState<string[]>([]);
 
   const toggleOption = (id: string) => {
@@ -27,7 +30,7 @@ export default function Troubles() {
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
       <div className="w-full pt-8 pb-6 px-6 flex items-center justify-between z-20 max-w-[500px]">
-        <button onClick={() => setLocation("/body-type")} className="p-2 -ml-2 active:scale-95 transition-transform">
+        <button onClick={onBack} className="p-2 -ml-2 active:scale-95 transition-transform">
           <ArrowLeft className="w-6 h-6 text-black" />
         </button>
         <img src={logoImg} alt="HARNY Logo" className="h-8 object-contain" />
@@ -112,7 +115,7 @@ export default function Troubles() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4, delay: 0.6 }}
-            onClick={() => setLocation("/focus-areas")}
+            onClick={onNext}
             className="w-full bg-[#F5EBE1] border border-[#E5D7CC] transition-all duration-300 rounded-[14px] py-4 px-5 flex items-center justify-between shadow-sm active:scale-[0.98] group mt-2"
           >
             <span className="text-2xl mr-2">❤️</span>
@@ -130,7 +133,7 @@ export default function Troubles() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          onClick={() => setLocation("/focus-areas")}
+          onClick={onNext}
           className={`w-full font-semibold text-[1.1rem] py-4 rounded-[14px] shadow-md transition-all duration-300 active:scale-[0.98] ${
             selected.length > 0 ? "bg-[#6C7076] hover:bg-[#5C6066] text-white" : "bg-[#A5ABB3] text-white/80"
           }`}

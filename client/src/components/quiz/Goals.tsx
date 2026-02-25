@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import imgWeight from "@assets/md-w2R6W-45a35e98dc2339aba337e220e54419547cc3664d6c8e34f4e6d06_1772044164090.png";
@@ -14,14 +13,17 @@ const GOALS = [
   { id: "pain", label: "Aliviar dores no corpo", image: imgPain }
 ];
 
-export default function Goals() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
 
+export default function Goals({ onNext, onBack }: Props) {
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
       <div className="w-full pt-8 pb-6 px-6 flex items-center justify-between z-20 max-w-[500px]">
-        <button onClick={() => setLocation("/welcome")} className="p-2 -ml-2 active:scale-95 transition-transform">
+        <button onClick={onBack} className="p-2 -ml-2 active:scale-95 transition-transform">
           <ArrowLeft className="w-6 h-6 text-black" />
         </button>
         <img src={logoImg} alt="HARNY Logo" className="h-8 object-contain" />
@@ -59,7 +61,7 @@ export default function Goals() {
               transition={{ duration: 0.4, delay: 0.1 + (index * 0.1) }}
               key={goal.id}
               onClick={() => {
-                setTimeout(() => setLocation("/solution"), 200);
+                setTimeout(() => onNext(), 200);
               }}
               className="w-full bg-[#EBE0D6] hover:bg-[#E2D4C8] border border-[#E0D3C9] transition-all duration-300 rounded-[14px] flex items-center shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] group p-1"
             >

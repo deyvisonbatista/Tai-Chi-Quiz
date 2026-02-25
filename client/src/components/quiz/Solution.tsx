@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import solutionImg from "@assets/lg-y5M6T-design-sem-nome-83_1772044380329.png";
 
-export default function Solution() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
 
+export default function Solution({ onNext, onBack }: Props) {
   const badSymptoms = [
     "A gordura acumula",
     "Os movimentos ficam limitados",
@@ -19,7 +21,7 @@ export default function Solution() {
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
       <div className="w-full pt-8 pb-4 px-6 flex items-center justify-between z-20 max-w-[500px]">
-        <button onClick={() => setLocation("/goals")} className="p-2 -ml-2 active:scale-95 transition-transform">
+        <button onClick={onBack} className="p-2 -ml-2 active:scale-95 transition-transform">
           <ArrowLeft className="w-6 h-6 text-black" />
         </button>
         <img src={logoImg} alt="HARNY Logo" className="h-8 object-contain" />
@@ -96,7 +98,7 @@ export default function Solution() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          onClick={() => setLocation("/knowledge")}
+          onClick={onNext}
           className="w-full bg-[#6C7076] hover:bg-[#5C6066] text-white font-semibold text-[1.1rem] py-4.5 rounded-[14px] shadow-md transition-colors active:scale-[0.98]"
         >
           Quero cuidar do meu corpo

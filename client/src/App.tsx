@@ -5,29 +5,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Quiz from "@/pages/Quiz";
-import Welcome from "@/pages/Welcome";
-import Goals from "@/pages/Goals";
-import Solution from "@/pages/Solution";
-import Knowledge from "@/pages/Knowledge";
-import NotCommon from "@/pages/NotCommon";
-import BodyType from "@/pages/BodyType";
-import Troubles from "@/pages/Troubles";
-import FocusAreas from "@/pages/FocusAreas";
-import Together from "@/pages/Together";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Quiz} />
-      <Route path="/welcome" component={Welcome} />
-      <Route path="/goals" component={Goals} />
-      <Route path="/solution" component={Solution} />
-      <Route path="/knowledge" component={Knowledge} />
-      <Route path="/not-common" component={NotCommon} />
-      <Route path="/body-type" component={BodyType} />
-      <Route path="/troubles" component={Troubles} />
-      <Route path="/focus-areas" component={FocusAreas} />
-      <Route path="/together" component={Together} />
       <Route component={NotFound} />
     </Switch>
   );

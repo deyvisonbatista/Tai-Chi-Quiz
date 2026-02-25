@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import imgSeco from "@assets/seco_1772044588064.png";
@@ -14,14 +13,17 @@ const BODY_TYPES = [
   { id: "volumoso", label: "Volumoso", image: imgVolumoso }
 ];
 
-export default function BodyType() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
 
+export default function BodyType({ onNext, onBack }: Props) {
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
       <div className="w-full pt-8 pb-6 px-6 flex items-center justify-between z-20 max-w-[500px]">
-        <button onClick={() => setLocation("/not-common")} className="p-2 -ml-2 active:scale-95 transition-transform">
+        <button onClick={onBack} className="p-2 -ml-2 active:scale-95 transition-transform">
           <ArrowLeft className="w-6 h-6 text-black" />
         </button>
         <img src={logoImg} alt="HARNY Logo" className="h-8 object-contain" />
@@ -61,7 +63,7 @@ export default function BodyType() {
               transition={{ duration: 0.4, delay: 0.1 + (index * 0.1) }}
               key={type.id}
               onClick={() => {
-                setTimeout(() => setLocation("/troubles"), 200);
+                setTimeout(() => onNext(), 200);
               }}
               className="bg-[#EBE0D6] hover:bg-[#E2D4C8] border border-[#E0D3C9] transition-all duration-300 rounded-[14px] overflow-hidden flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] group relative"
             >

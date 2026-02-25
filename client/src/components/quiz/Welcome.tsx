@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import logoImg from "@assets/logo_1772043688813.png";
 import welcomeImg from "@assets/img2_1772044070527.png";
 
-export default function Welcome() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
 
+export default function Welcome({ onNext }: Props) {
   return (
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
@@ -60,7 +62,7 @@ export default function Welcome() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          onClick={() => setLocation("/goals")}
+          onClick={onNext}
           className="w-full bg-[#6C7076] hover:bg-[#5C6066] text-white font-semibold text-[1.1rem] py-4 rounded-[14px] shadow-md transition-colors active:scale-[0.98]"
         >
           Continuar

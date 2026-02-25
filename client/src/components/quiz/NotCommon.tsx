@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-import { useLocation } from "wouter";
 import { ArrowLeft, Check } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import notCommonImg from "@assets/lg-YYTso-design-sem-nome-21-1_1772044460469.jpg";
 
-export default function NotCommon() {
-  const [, setLocation] = useLocation();
+interface Props {
+  onNext: () => void;
+  onBack: () => void;
+}
 
+export default function NotCommon({ onNext, onBack }: Props) {
   const benefits = [
     { text: "Emagrecer de um jeito leve e sem sofrimento", bgColor: "bg-[#DDEBFA]" },
     { text: "Ganhar força e definir o corpo", bgColor: "bg-[#F4F9F5]" },
@@ -18,7 +20,7 @@ export default function NotCommon() {
     <div className="min-h-screen bg-[#FDF6ED] flex flex-col items-center overflow-x-hidden font-sans relative pb-10">
       {/* Header / Logo */}
       <div className="w-full pt-8 pb-4 px-6 flex items-center justify-between z-20 max-w-[500px]">
-        <button onClick={() => setLocation("/knowledge")} className="p-2 -ml-2 active:scale-95 transition-transform">
+        <button onClick={onBack} className="p-2 -ml-2 active:scale-95 transition-transform">
           <ArrowLeft className="w-6 h-6 text-black" />
         </button>
         <img src={logoImg} alt="HARNY Logo" className="h-8 object-contain" />
@@ -79,7 +81,7 @@ export default function NotCommon() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          onClick={() => setLocation("/body-type")}
+          onClick={onNext}
           className="w-full bg-[#6C7076] hover:bg-[#5C6066] text-white font-semibold text-[1.1rem] py-4 rounded-[14px] shadow-md transition-colors active:scale-[0.98]"
         >
           Continuar
