@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import { Star, ChevronDown, ChevronLeft, ChevronRight, Check } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import beforeAfterImg from "@assets/lg-gAdEu-design-sem-nome-2026-02-12t004304767_1772058641154.png";
-import comparisonImg from "@assets/md-OHLiw-screenshot-1_1772058659417.png";
 import flexImg from "@assets/md-vvcmA-screenshot-4_1772058667011.png";
 import mirrorImg from "@assets/md-g52gA-screenshot-6_1772058676739.png";
 import meditationImg from "@assets/md-ImCbq-screenshot-7_1772058680078.png";
@@ -379,11 +378,6 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
             Resultados reais de alunas <span className="text-[#DE77A5]">Harny</span>
           </h2>
           <ResultsCarousel />
-        </div>
-
-        {/* 7. Gym vs Tai Chi */}
-        <div className="w-full rounded-[14px] overflow-hidden mb-8 shadow-sm">
-          <img src={comparisonImg} alt="Academia vs Tai Chi" className="w-full h-auto" />
         </div>
 
         {/* 8. Benefit image cards */}
