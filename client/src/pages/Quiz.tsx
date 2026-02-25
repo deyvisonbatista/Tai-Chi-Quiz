@@ -13,6 +13,11 @@ import BodyType from "@/components/quiz/BodyType";
 import Troubles from "@/components/quiz/Troubles";
 import FocusAreas from "@/components/quiz/FocusAreas";
 import Together from "@/components/quiz/Together";
+import PoseTaiChi from "@/components/quiz/PoseTaiChi";
+import ProudBody from "@/components/quiz/ProudBody";
+import TouchToes from "@/components/quiz/TouchToes";
+import NormalDay from "@/components/quiz/NormalDay";
+import NeckStiffness from "@/components/quiz/NeckStiffness";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -138,6 +143,16 @@ export default function Quiz() {
         return <FocusAreas onNext={handleNext} onBack={handleBack} />;
       case 10:
         return <Together onNext={handleNext} onBack={handleBack} />;
+      case 11:
+        return <PoseTaiChi onNext={handleNext} onBack={handleBack} />;
+      case 12:
+        return <ProudBody onNext={handleNext} onBack={handleBack} />;
+      case 13:
+        return <TouchToes onNext={handleNext} onBack={handleBack} />;
+      case 14:
+        return <NormalDay onNext={handleNext} onBack={handleBack} />;
+      case 15:
+        return <NeckStiffness onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
