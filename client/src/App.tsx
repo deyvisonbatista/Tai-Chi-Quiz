@@ -11,6 +11,9 @@ import Solution from "@/pages/Solution";
 import Knowledge from "@/pages/Knowledge";
 import NotCommon from "@/pages/NotCommon";
 import BodyType from "@/pages/BodyType";
+import Troubles from "@/pages/Troubles";
+import FocusAreas from "@/pages/FocusAreas";
+import Together from "@/pages/Together";
 
 function Router() {
   return (
@@ -22,6 +25,9 @@ function Router() {
       <Route path="/knowledge" component={Knowledge} />
       <Route path="/not-common" component={NotCommon} />
       <Route path="/body-type" component={BodyType} />
+      <Route path="/troubles" component={Troubles} />
+      <Route path="/focus-areas" component={FocusAreas} />
+      <Route path="/together" component={Together} />
       <Route component={NotFound} />
     </Switch>
   );

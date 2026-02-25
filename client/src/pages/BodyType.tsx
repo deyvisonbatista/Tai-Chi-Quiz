@@ -61,8 +61,7 @@ export default function BodyType() {
               transition={{ duration: 0.4, delay: 0.1 + (index * 0.1) }}
               key={type.id}
               onClick={() => {
-                console.log("Selected body type:", type.id);
-                // Next step navigation
+                setTimeout(() => setLocation("/troubles"), 200);
               }}
               className="bg-[#EBE0D6] hover:bg-[#E2D4C8] border border-[#E0D3C9] transition-all duration-300 rounded-[14px] overflow-hidden flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)] active:scale-[0.98] group relative"
             >
