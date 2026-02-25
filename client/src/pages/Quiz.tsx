@@ -43,13 +43,14 @@ export default function Quiz() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-center mb-6 flex flex-col items-center"
+          className="text-center mb-6 w-full px-2"
         >
-          <h1 className="text-[2.75rem] sm:text-[3.25rem] leading-[1.05] font-extrabold tracking-tight mb-4 flex flex-col items-center gap-1">
-            <span className="text-[#6B7686]">Tai chi</span>
-            <span className="text-black leading-none">para<br />Iniciantes</span>
+          <h1 className="text-[2.85rem] sm:text-[3.5rem] leading-[1.05] font-extrabold tracking-tight mb-4 text-center">
+            <span className="text-[#6B7686]">Tai chi</span>{" "}
+            <span className="text-black">para</span><br />
+            <span className="text-black">Iniciantes</span>
           </h1>
-          <p className="text-[#222] text-lg sm:text-[1.15rem] font-medium mt-1">
+          <p className="text-[#222] text-lg sm:text-[1.15rem] font-medium mt-3">
             De acordo com sua idade:
           </p>
         </motion.div>
