@@ -40,12 +40,29 @@ const AGE_OPTIONS = [
 export default function Quiz() {
   const [step, setStep] = useState(1);
   const [selectedAge, setSelectedAge] = useState<string | null>(null);
+  const [answers, setAnswers] = useState<Record<string, any>>({});
 
-  const handleNext = () => setStep((s) => s + 1);
+  const saveAnswer = (key: string, value: any) => {
+    setAnswers((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const handleNext = () => {
+    const nextStep = step + 1;
+    if (nextStep > 26) {
+      const finalAnswers = { ...answers, age: selectedAge };
+      fetch("/api/quiz/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers: finalAnswers }),
+      }).catch(console.error);
+    }
+    setStep(nextStep);
+  };
   const handleBack = () => setStep((s) => s - 1);
 
   const handleSelectAge = (age: string) => {
     setSelectedAge(age);
+    saveAnswer("age", age);
     setTimeout(() => handleNext(), 200);
   };
 
