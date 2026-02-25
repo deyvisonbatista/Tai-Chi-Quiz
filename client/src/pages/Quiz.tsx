@@ -34,6 +34,9 @@ import WeightInput from "@/components/quiz/WeightInput";
 import TargetWeight from "@/components/quiz/TargetWeight";
 import IdealBody from "@/components/quiz/IdealBody";
 import LoadingAnalysis from "@/components/quiz/LoadingAnalysis";
+import PreferStart from "@/components/quiz/PreferStart";
+import FattyFoods from "@/components/quiz/FattyFoods";
+import BloodPressure from "@/components/quiz/BloodPressure";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -207,6 +210,12 @@ export default function Quiz() {
         return <IdealBody onNext={handleNext} onBack={handleBack} />;
       case 31:
         return <LoadingAnalysis onNext={handleNext} onBack={handleBack} />;
+      case 32:
+        return <PreferStart onNext={handleNext} onBack={handleBack} />;
+      case 33:
+        return <FattyFoods onNext={handleNext} onBack={handleBack} />;
+      case 34:
+        return <BloodPressure onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
