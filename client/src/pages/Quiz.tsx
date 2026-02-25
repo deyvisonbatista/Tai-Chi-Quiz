@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import logoImg from "@assets/logo_1772043688813.png";
@@ -12,11 +13,12 @@ const AGE_OPTIONS = [
 ];
 
 export default function Quiz() {
+  const [, setLocation] = useLocation();
   const [selectedAge, setSelectedAge] = useState<string | null>(null);
 
   const handleSelectAge = (age: string) => {
     setSelectedAge(age);
-    console.log("Selected age:", age);
+    setTimeout(() => setLocation("/welcome"), 200);
   };
 
   return (
