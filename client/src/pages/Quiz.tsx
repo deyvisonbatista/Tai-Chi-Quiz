@@ -22,6 +22,10 @@ import WeightChange from "@/components/quiz/WeightChange";
 import Stairs from "@/components/quiz/Stairs";
 import ExtendArms from "@/components/quiz/ExtendArms";
 import StudiesConfirm from "@/components/quiz/StudiesConfirm";
+import DiscomfortAreas from "@/components/quiz/DiscomfortAreas";
+import RestoreBody from "@/components/quiz/RestoreBody";
+import TrainStart from "@/components/quiz/TrainStart";
+import TrainIntensity from "@/components/quiz/TrainIntensity";
 
 const AGE_OPTIONS = [
   "60 +",
@@ -165,6 +169,14 @@ export default function Quiz() {
         return <ExtendArms onNext={handleNext} onBack={handleBack} />;
       case 19:
         return <StudiesConfirm onNext={handleNext} onBack={handleBack} />;
+      case 20:
+        return <DiscomfortAreas onNext={handleNext} onBack={handleBack} />;
+      case 21:
+        return <RestoreBody onNext={handleNext} onBack={handleBack} />;
+      case 22:
+        return <TrainStart onNext={handleNext} onBack={handleBack} />;
+      case 23:
+        return <TrainIntensity onNext={handleNext} onBack={handleBack} />;
       default:
         return null;
     }
