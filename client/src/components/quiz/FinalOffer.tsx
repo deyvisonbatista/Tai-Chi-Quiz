@@ -426,19 +426,69 @@ export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
           <ReviewsCarousel />
         </div>
 
-        {/* 13. Pricing card */}
-        <div className="w-full bg-white border-2 border-[#DE77A5] rounded-[18px] p-6 mb-4 shadow-md text-center">
-          <p className="text-[#888] text-[0.85rem] mb-1 line-through">De R$ 197,00</p>
-          <h2 className="text-[2rem] font-bold text-[#DE77A5] mb-1">R$ 29,90</h2>
-          <p className="text-[#333] font-semibold text-[0.95rem] mb-3">Plano Trimestral</p>
-          <p className="text-[#888] text-[0.8rem] mb-4">Menos de R$ 1 por dia para transformar sua vida</p>
-          <a
-            href="#"
-            data-testid="button-buy-plan"
-            className="block w-full bg-[#DE77A5] hover:bg-[#D4669A] text-white font-bold text-[1.1rem] py-4 rounded-[14px] shadow-md transition-colors active:scale-[0.98] text-center"
-          >
-            QUERO COMEÇAR AGORA! 💕
-          </a>
+        {/* 13. Pricing cards */}
+        <div className="w-full mb-4">
+          <h2 className="text-[1.3rem] font-bold text-black mb-1 text-center">
+            Escolha seu plano de <span className="text-[#DE77A5]">Tai Chi!</span>
+          </h2>
+          <p className="text-[#888] text-[0.85rem] text-center mb-6">Não é assinatura, você paga somente uma vez.</p>
+
+          <div className="w-full bg-white border border-[#E8D9C8] rounded-[14px] p-5 mb-4 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="text-black font-bold text-[1.1rem] mb-1">Plano de 1 mês</h3>
+                <p className="text-[0.9rem]">De <span className="text-red-400 line-through">€99,90</span></p>
+                <p className="text-[0.95rem]">Por <span className="text-green-600 font-bold text-[1.15rem]">€9,90</span></p>
+              </div>
+              <div className="text-right">
+                <p className="text-[#888] text-[0.75rem]">Apenas</p>
+                <p className="text-black font-bold text-[1.5rem] leading-tight">€0,33</p>
+                <p className="text-[#888] text-[0.75rem]">Por dia</p>
+              </div>
+            </div>
+            <a href="#" data-testid="button-buy-1month" className="block w-full bg-[#444] hover:bg-[#333] text-white font-bold text-[0.95rem] py-3.5 rounded-[10px] mt-4 text-center tracking-wide active:scale-[0.98] transition-all">
+              QUERO O PLANO DE 1 MÊS
+            </a>
+          </div>
+
+          <div className="w-full bg-white border-2 border-[#DE77A5] rounded-[14px] p-5 mb-4 shadow-md relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#6C7686] text-white text-[0.75rem] font-bold px-4 py-1 rounded-full flex items-center gap-1">
+              ⭐ Promoção
+            </div>
+            <div className="flex items-start justify-between mt-1">
+              <div>
+                <h3 className="text-black font-bold text-[1.1rem] mb-1">Plano de 3 meses</h3>
+                <p className="text-[0.9rem]">De <span className="text-red-400 line-through">€29,90</span></p>
+                <p className="text-[0.95rem]">Por <span className="text-green-600 font-bold text-[1.15rem]">€12,90</span></p>
+              </div>
+              <div className="text-right">
+                <p className="text-[#888] text-[0.75rem]">Apenas</p>
+                <p className="text-black font-bold text-[1.5rem] leading-tight">€0,14</p>
+                <p className="text-[#888] text-[0.75rem]">Por dia</p>
+              </div>
+            </div>
+            <a href="#" data-testid="button-buy-3months" className="block w-full bg-[#444] hover:bg-[#333] text-white font-bold text-[0.95rem] py-3.5 rounded-[10px] mt-4 text-center tracking-wide active:scale-[0.98] transition-all">
+              QUERO O PLANO DE 3 MESES
+            </a>
+          </div>
+
+          <div className="w-full bg-white border border-[#E8D9C8] rounded-[14px] p-5 mb-4 shadow-sm">
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="text-black font-bold text-[1.1rem] mb-1">Plano Anual</h3>
+                <p className="text-[0.9rem]">De <span className="text-red-400 line-through">€99,90</span></p>
+                <p className="text-[0.95rem]">Por <span className="text-green-600 font-bold text-[1.15rem]">€15,90</span></p>
+              </div>
+              <div className="text-right">
+                <p className="text-[#888] text-[0.75rem]">Apenas</p>
+                <p className="text-black font-bold text-[1.5rem] leading-tight">€0,04</p>
+                <p className="text-[#888] text-[0.75rem]">Por dia</p>
+              </div>
+            </div>
+            <a href="#" data-testid="button-buy-annual" className="block w-full bg-[#444] hover:bg-[#333] text-white font-bold text-[0.95rem] py-3.5 rounded-[10px] mt-4 text-center tracking-wide active:scale-[0.98] transition-all">
+              QUERO O PLANO ANUAL
+            </a>
+          </div>
         </div>
 
         {/* 14. Timer + CTA repeat */}
