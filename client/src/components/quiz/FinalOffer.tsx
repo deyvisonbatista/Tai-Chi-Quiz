@@ -302,7 +302,21 @@ function WeightGraph({ currentWeight, targetWeight }: { currentWeight: number; t
   );
 }
 
+const ALL_PRELOAD_IMAGES = [
+  beforeAfterImg, flexImg, mirrorImg, meditationImg, chainsImg, fitImg,
+  socialProofImg, appFeaturesImg, womanTvImg, garantiaImg,
+  ...RESULTS,
+  v1, v2, v3, v4, v5, v6, v7,
+];
+
 export default function FinalOffer({ onBack, weightKg, targetWeight }: Props) {
+  useEffect(() => {
+    ALL_PRELOAD_IMAGES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   const currentW = weightKg ? parseFloat(weightKg) : 75;
   const targetW = targetWeight ? parseFloat(targetWeight) : Math.round(currentW * 0.9);
 
