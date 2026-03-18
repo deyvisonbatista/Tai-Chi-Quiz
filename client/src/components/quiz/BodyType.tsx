@@ -3,13 +3,13 @@ import { ArrowLeft, ChevronRight } from "lucide-react";
 import logoImg from "@assets/logo_1772043688813.png";
 import imgSeco from "@assets/seco_1772044588064.png";
 import imgEquilibrado from "@assets/equilibrado_1772044591899.png";
-import imgCurvilineo from "@assets/Curvilíneo_1772044594308.png";
+import imgCurvilineo from "@assets/Curvilineo_1772044594308.png";
 import imgVolumoso from "@assets/volumoso_1772044596747.png";
 
 const BODY_TYPES = [
   { id: "seco", label: "Seco", image: imgSeco },
   { id: "equilibrado", label: "Equilibrado", image: imgEquilibrado },
-  { id: "curvilineo", label: "Curvilíneo", image: imgCurvilineo },
+  { id: "curvilineo", label: "Curvilineo", image: imgCurvilineo },
   { id: "volumoso", label: "Volumoso", image: imgVolumoso }
 ];
 
@@ -51,7 +51,7 @@ export default function BodyType({ onNext, onBack }: Props) {
           transition={{ duration: 0.5 }}
           className="text-[1.8rem] font-bold text-black mb-8 text-center leading-tight tracking-tight px-4"
         >
-          Como você <span className="text-[#DE77A5]">descreveria</span> seu corpo?
+          Como você <span className="text-[#DE77A5]">descreveria</span> seu corpo?
         </motion.h1>
 
         {/* 2x2 Grid for Body Types */}
